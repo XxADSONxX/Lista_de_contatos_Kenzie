@@ -8,6 +8,7 @@
 */
 
 const listaContatoLocal = [];
+let id = 0;
 
 const listaCOntatosCOntainer = document.querySelector('.secaoListaContatos_lista');
 
@@ -24,24 +25,47 @@ function adicionarNovoContato() {
     const valorTelefone = campoTelefone.value;
 
     const novoContato = {
+        id: id,
         nome: valorNome,
         email: valorEmail,
         telefone: valorTelefone
     };
+    id++;
     /* salvando valores na lista de contatos usando o método push */
     listaContatoLocal.push(novoContato);
+
     renderizarLayout();
 }
 
 botaoAdicionar.addEventListener('click', adicionarNovoContato);
 
+function removerContato(evento) {
+    const botaoCLicado = evento.target;
+    const contatoClicado = botaoCLicado.parentElement;
+    const idContatoClicado = contatoClicado.dataset.id;
+
+    const contatoRemovido = listaContatoLocal.find((contato) => contato.id == idContatoClicado);
+    /* indexof encontra a posição do contato a ser removido */
+    const posicaoContatoRemovido = listaContatoLocal.indexOf(contatoRemovido);
+    listaContatoLocal.splice(posicaoContatoRemovido, 1);
+    renderizarLayout()
+}
+
 function renderizarLayout() {
     listaCOntatosCOntainer.innerHTML = '';
 
-    for (let i = 0; i < listaContatoLocal.length; i++){
-        criarLayout(listaContatoLocal[i]);
+    if(listaContatoLocal.length !== 0){
+        for (let i = 0; i < listaContatoLocal.length; i++) {
+            criarLayout(listaContatoLocal[i]);
+        }
+    } else {
+        const listaContatoVazia = `<li>
+        <p>Não há contatos na sua lista</p> </li>`;
+
+        listaCOntatosCOntainer.innerHTML = listaContatoVazia;
     }
 }
+renderizarLayout();
 
 function criarLayout(contato) {
     /* criar elemento HTML atravez do js */
@@ -57,12 +81,14 @@ function criarLayout(contato) {
     li.appendChild(p);
     li.appendChild(span);
 
-button.id = "removerContato";
+    button.id = "removerContato";
+    button.addEventListener('click', removerContato);
 
-h2.innerText = contato.nome;
-p.innerText = contato.email;
-span.innerText = contato.telefone;
+    li.dataset.id = contato.id;
+    h2.innerText = contato.nome;
+    p.innerText = contato.email;
+    span.innerText = contato.telefone;
 
 
-listaCOntatosCOntainer.appendChild(li);
+    listaCOntatosCOntainer.appendChild(li);
 }
