@@ -12,6 +12,7 @@ header .container{
     margin: 0 auto;
 }
 header figure{}
+
 header figure img{
     width: 100%;
     max-width: 120px;
