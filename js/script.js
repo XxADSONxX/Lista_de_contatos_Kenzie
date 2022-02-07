@@ -9,9 +9,9 @@
 
 const listaContatoLocal = [];
 
+const listaCOntatosCOntainer = document.querySelector('.secaoListaContatos_lista');
 
-
-
+/* interação direta com o HTML */
 const campoNome = document.getElementById('campoNome');
 const campoEmail = document.getElementById('campoEmail');
 const campoTelefone = document.getElementById('campoTelefone');
@@ -28,9 +28,41 @@ function adicionarNovoContato() {
         email: valorEmail,
         telefone: valorTelefone
     };
+    /* salvando valores na lista de contatos usando o método push */
     listaContatoLocal.push(novoContato);
-
-    console.log(listaContatoLocal);
+    renderizarLayout();
 }
 
 botaoAdicionar.addEventListener('click', adicionarNovoContato);
+
+function renderizarLayout() {
+    listaCOntatosCOntainer.innerHTML = '';
+
+    for (let i = 0; i < listaContatoLocal.length; i++){
+        criarLayout(listaContatoLocal[i]);
+    }
+}
+
+function criarLayout(contato) {
+    /* criar elemento HTML atravez do js */
+    const li = document.createElement('li');
+    const button = document.createElement('button');
+    const h2 = document.createElement('h2');
+    const p = document.createElement('p');
+    const span = document.createElement('span');
+
+    /* inserir um elemento dentro de outro */
+    li.appendChild(button);
+    li.appendChild(h2);
+    li.appendChild(p);
+    li.appendChild(span);
+
+button.id = "removerContato";
+
+h2.innerText = contato.nome;
+p.innerText = contato.email;
+span.innerText = contato.telefone;
+
+
+listaCOntatosCOntainer.appendChild(li);
+}
