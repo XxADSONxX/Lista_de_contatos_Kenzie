@@ -9,12 +9,8 @@
 
 const listaContatoLocal = [];
 
-const novoContato = {
-    nome: "Adson",
-    email: "contato.adsonsantana@outlook.com",
-    telefone: "998098989"
-};
-listaContatoLocal.push(novoContato);
+
+
 
 const campoNome = document.getElementById('campoNome');
 const campoEmail = document.getElementById('campoEmail');
@@ -27,9 +23,14 @@ function adicionarNovoContato() {
     const valorEmail = campoEmail.value;
     const valorTelefone = campoTelefone.value;
 
-    console.log(valorNome);
-    console.log(valorEmail);
-    console.log(valorTelefone);
+    const novoContato = {
+        nome: valorNome,
+        email: valorEmail,
+        telefone: valorTelefone
+    };
+    listaContatoLocal.push(novoContato);
+
+    console.log(listaContatoLocal);
 }
 
 botaoAdicionar.addEventListener('click', adicionarNovoContato);
