@@ -16,7 +16,6 @@ const listaCOntatosCOntainer = document.querySelector('.secaoListaContatos_lista
 const campoNome = document.getElementById('campoNome');
 const campoEmail = document.getElementById('campoEmail');
 const campoTelefone = document.getElementById('campoTelefone');
-
 const botaoAdicionar = document.getElementById('botaoAdicionar');
 
 function adicionarNovoContato() {
@@ -38,6 +37,8 @@ function adicionarNovoContato() {
 }
 
 botaoAdicionar.addEventListener('click', adicionarNovoContato);
+
+
 
 function removerContato(evento) {
     const botaoCLicado = evento.target;
@@ -92,3 +93,5 @@ function criarLayout(contato) {
 
     listaCOntatosCOntainer.appendChild(li);
 }
+ /* add localStorage no cod para salvar valores */
+localStorage.setItem("nome", "");

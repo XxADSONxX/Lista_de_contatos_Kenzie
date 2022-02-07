@@ -3,15 +3,17 @@ body{
 }
 
 header{
-    background-color: #162b7b;
-    padding: 20px 0;
+    background-color: #2e0a0a;
+    padding: 50px 0;
 }
 header .container{
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
 }
-header figure{}
+header figure{
+    padding-top: 10px;
+}
 
 header figure img{
     width: 100%;
@@ -30,12 +32,12 @@ main{
 
 main section {
     width: 50%;
-    height: 65.5vh;
+    height: 64.3vh;
     padding: 100px 40px;
 }
 
 .secaoFormulario{
-    background-color: #162b7b; 
+    background-color: #2e0a0a; 
 }
 .secaoFormulario_formulario{
     display: flex;
